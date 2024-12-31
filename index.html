@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="light-mode">
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div id="logo">Addi Quiz</div>
+    
+    <div id="theme-toggle">
+      <label class="switch">
+        <input type="checkbox" id="toggle-theme">
+        <span class="slider round"></span>
+      </label>
+    </div>
+    <!-- Reset Button -->
+    <button id="reset-btn" class="hidden" onclick="resetQuiz()">Reset</button>
+  </nav>
+
+  <!-- Category Selection -->
+  <div id="category-selection">
+    <h1>Choose a Quiz Category</h1>
+    <button onclick="startQuiz('HTML')">HTML</button>
+    <button onclick="startQuiz('CSS')">CSS</button>
+    <button onclick="startQuiz('JavaScript')">JavaScript</button>
+    <button onclick="startQuiz('Python')">Python</button> <!-- New Category -->
+  </div>
+  <!-- Quiz Container -->
+  <div id="quiz-container" class="hidden">
+    <div id="timer"></div>
+    <div id="question-container">
+      <h3 id="question-number"></h3> <!-- Added for question number -->
+      <h2 id="question"></h2>
+      <div id="options"></div>
+    </div>
+    <div id="navigation-buttons">
+      <button id="next-btn" class="hidden" onclick="nextQuestion()">Next</button>
+    </div>
+  </div>
+
+  <!-- Result Container -->
+  <div id="result-container" class="hidden">
+    <h2 id="score"></h2>
+    <button id="restart-btn" onclick="location.reload()">Restart</button>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p>&copy; 2025 Addi Quiz. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

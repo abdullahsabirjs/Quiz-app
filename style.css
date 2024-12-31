@@ -1,0 +1,327 @@
+/* General Styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s, color 0.3s;
+    min-height: 100vh; /* Ensures the body takes up the full height of the viewport */
+    display: flex;
+    flex-direction: column; /* Makes the body a flex container */
+}
+  
+.light-mode {
+    background-color: #f9f9f9;
+    color: #333;
+}
+  
+.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+}
+  
+/* Navbar Styling */
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    position: relative;
+    animation: slideIn 0.5s ease-out;
+}
+  
+#logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+  
+#theme-toggle {
+    margin-left: auto;
+}
+
+/* Reset Button Styling */
+#reset-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2196F3; /* Tomato color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    visibility: hidden; /* Initially hidden */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+  
+#reset-btn:hover {
+    background-color: #2196F3; /* Darker Tomato */
+}
+  
+#reset-btn:focus {
+    outline: none;
+}
+  
+/* Switch Styling */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+  
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+  
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+  
+input:checked + .slider {
+    background-color: #2196F3;
+}
+  
+input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+  
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+  
+.slider.round {
+    border-radius: 34px;
+}
+  
+.slider.round:before {
+    border-radius: 50%;
+}
+  
+/* Category Selection Styling */
+#category-selection {
+    max-width: 90%; /* Allow it to take up 90% of the screen width */
+    margin: 50px auto;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+  
+button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+  
+button:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+  
+/* Quiz Container Styling */
+#quiz-container {
+    max-width: 90%; /* Adjust max-width for responsiveness */
+    margin: 50px auto;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+  
+#options button {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 15px;
+    background-color: #444;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+  
+#options button:hover {
+    background-color: #666;
+}
+  
+#options button.correct {
+    background-color: green !important;
+}
+  
+#options button.wrong {
+    background-color: red !important;
+}
+  
+/* Result Container Styling */
+#result-container {
+    max-width: 90%; /* Adjust max-width for responsiveness */
+    margin: 50px auto;
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+  
+#restart-btn {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+  
+#restart-btn:hover {
+    background-color: #218838;
+}
+  
+/* Timer Styling */
+#timer {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+  
+.hidden {
+    display: none;
+}
+  
+/* Time Over Message Styling */
+.time-over-message {
+    font-size: 24px;
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Pushes the footer to the bottom */
+}
+
+footer p {
+    margin: 5px 0;
+    font-size: 16px;
+}
+  
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+  
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries for Responsiveness */
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+    #navbar {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #logo {
+        font-size: 20px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    #category-selection, #quiz-container, #result-container {
+        max-width: 90%;
+    }
+
+    footer p {
+        font-size: 14px;
+    }
+}
+
+/* Smaller Mobile Devices */
+@media (max-width: 480px) {
+    #logo {
+        font-size: 18px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    #category-selection, #quiz-container, #result-container {
+        max-width: 100%;
+        margin: 20px auto;
+    }
+
+    footer p {
+        font-size: 12px;
+    }
+}
+
+/* Large Screens (Desktops) */
+@media (min-width: 1024px) {
+    #navbar {
+        padding: 20px 40px;
+    }
+
+    #logo {
+        font-size: 28px;
+    }
+
+    button {
+        font-size: 18px;
+        padding: 12px 18px;
+    }
+
+    #category-selection, #quiz-container, #result-container {
+        max-width: 800px; /* Use larger max-width for desktops */
+    }
+
+    footer p {
+        font-size: 18px;
+    }
+}
