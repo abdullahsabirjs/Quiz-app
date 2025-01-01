@@ -17,8 +17,7 @@ body {
     background-color: #121212;
     color: #f1f1f1;
 }
-  
-/* Navbar Styling */
+  /* Navbar Styling */
 #navbar {
     display: flex;
     justify-content: space-between;
@@ -29,15 +28,16 @@ body {
     position: relative;
     animation: slideIn 0.5s ease-out;
 }
-  
+
 #logo {
     font-size: 24px;
     font-weight: bold;
 }
-  
+
 #theme-toggle {
     margin-left: auto;
 }
+
 
 /* Reset Button Styling */
 #reset-btn {
@@ -254,51 +254,48 @@ footer p {
     }
 }
 
-/* Media Queries for Responsiveness */
-
 /* Mobile Devices */
 @media (max-width: 768px) {
     #navbar {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: row; /* Ensure the navbar stays horizontal */
+        justify-content: space-between; /* Maintain spacing */
+        padding: 10px 15px; /* Adjust padding */
     }
 
     #logo {
-        font-size: 20px;
+        font-size: 18px; /* Reduce logo size */
+        font-weight: bold;
+    }
+
+    #theme-toggle {
+        font-size: 14px; /* Adjust button size */
     }
 
     button {
         font-size: 14px;
         padding: 8px 12px;
     }
-
-    #category-selection, #quiz-container, #result-container {
-        max-width: 90%;
-    }
-
-    footer p {
-        font-size: 14px;
-    }
 }
 
 /* Smaller Mobile Devices */
 @media (max-width: 480px) {
+    #navbar {
+        flex-direction: row; /* Ensure horizontal layout */
+        justify-content: space-between; /* Maintain spacing */
+        padding: 8px 10px; /* Adjust padding */
+    }
+
     #logo {
-        font-size: 18px;
+        font-size: 16px; /* Further reduce logo size */
+    }
+
+    #theme-toggle {
+        font-size: 12px; /* Adjust button size */
     }
 
     button {
         font-size: 12px;
         padding: 6px 10px;
-    }
-
-    #category-selection, #quiz-container, #result-container {
-        max-width: 100%;
-        margin: 20px auto;
-    }
-
-    footer p {
-        font-size: 12px;
     }
 }
 
@@ -315,13 +312,5 @@ footer p {
     button {
         font-size: 18px;
         padding: 12px 18px;
-    }
-
-    #category-selection, #quiz-container, #result-container {
-        max-width: 800px; /* Use larger max-width for desktops */
-    }
-
-    footer p {
-        font-size: 18px;
     }
 }
