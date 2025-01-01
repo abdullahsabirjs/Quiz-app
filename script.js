@@ -77,7 +77,7 @@ const quizData = {
         }
       ],      
     
-      css: [
+      CSS: [
         {
           question: "What does CSS stand for?",
           options: ["Computer Style Sheets", "Creative Style Sheets", "None of the above","Cascading Style Sheets"],
