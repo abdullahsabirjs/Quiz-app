@@ -308,29 +308,31 @@ const quizData = {
   let currentCategory = null;
   let currentQuestionIndex = 0;
   let score = 0;
-  let timeLeft = 300; // 15 minutes
+  let timeLeft = 300; // 5 minutes
   let timerInterval;
+  
   function startQuiz(category) {
     currentCategory = category;
     document.getElementById("category-selection").classList.add("hidden");
     document.getElementById("quiz-container").classList.remove("hidden");
+  
     // Show the reset button
-  const resetButton = document.getElementById('reset-btn');
-  resetButton.style.visibility = 'visible';
-    
+    const resetButton = document.getElementById("reset-btn");
+    resetButton.style.visibility = "visible";
+  
     startTimer();
     showQuestion();
   }
   
-  
   function startTimer() {
     const timerElement = document.getElementById("timer");
   
+    // Initialize the timer display immediately
+    updateTimerDisplay();
+  
     timerInterval = setInterval(() => {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
       timeLeft--;
+      updateTimerDisplay();
   
       if (timeLeft < 0) {
         clearInterval(timerInterval);
@@ -340,8 +342,14 @@ const quizData = {
     }, 1000);
   }
   
+  function updateTimerDisplay() {
+    const timerElement = document.getElementById("timer");
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+  }
+  
   function showTimeOver() {
-    // Show a "Time Over" message
     const timeOverMessage = document.createElement("div");
     timeOverMessage.textContent = "Time Over!";
     timeOverMessage.classList.add("time-over-message");
@@ -350,8 +358,8 @@ const quizData = {
   
   function showQuestion() {
     const currentQuestion = quizData[currentCategory][currentQuestionIndex];
-    const questionNumber = currentQuestionIndex + 1; // Adding 1 to start from 1 instead of 0
-    document.getElementById("question-number").textContent = `Q.${questionNumber}`; // Display question number
+    const questionNumber = currentQuestionIndex + 1;
+    document.getElementById("question-number").textContent = `Q.${questionNumber}`;
     document.getElementById("question").textContent = currentQuestion.question;
   
     const optionsElement = document.getElementById("options");
@@ -370,26 +378,21 @@ const quizData = {
   function selectOption(selectedIndex, button) {
     const currentQuestion = quizData[currentCategory][currentQuestionIndex];
   
-    // Disable all options after selection and prevent hover
     const options = document.querySelectorAll("#options button");
     options.forEach((btn) => {
-      btn.disabled = true; // Disable button
-      btn.classList.add("no-hover"); // Prevent hover
+      btn.disabled = true;
+      btn.classList.add("no-hover");
     });
   
-    // Check if the selected answer is correct or wrong
     if (selectedIndex === currentQuestion.correct) {
       button.classList.add("correct");
       score++;
     } else {
       button.classList.add("wrong");
-  
-      // Highlight the correct answer in green
       const correctButton = options[currentQuestion.correct];
       correctButton.classList.add("correct");
     }
   
-    // Show the next button
     document.getElementById("next-btn").classList.remove("hidden");
   }
   
@@ -408,9 +411,11 @@ const quizData = {
     document.getElementById("quiz-container").classList.add("hidden");
     document.getElementById("result-container").classList.remove("hidden");
     document.getElementById("score").textContent = `Your score is ${score} out of ${quizData[currentCategory].length}`;
+      // Hide the reset button in the navbar
+  const resetButton = document.getElementById("reset-btn");
+  resetButton.style.visibility = "hidden";
   }
   
-  // Theme toggle functionality
   document.getElementById("toggle-theme").addEventListener("change", (e) => {
     const body = document.body;
     const isChecked = e.target.checked;
@@ -423,35 +428,37 @@ const quizData = {
       body.classList.add("light-mode");
     }
   });
+  
   function resetQuiz() {
     // Reset all variables and hide/show necessary elements
     currentCategory = null;
     currentQuestionIndex = 0;
     score = 0;
-    timeLeft = 900; // 15 minutes
+    timeLeft = 300; // Reset to 5 minutes
     clearInterval(timerInterval);
-    
+  
     // Hide quiz and result containers
     document.getElementById("quiz-container").classList.add("hidden");
     document.getElementById("result-container").classList.add("hidden");
-    
+  
     // Show category selection
     document.getElementById("category-selection").classList.remove("hidden");
-    
+  
     // Reset timer display
-    document.getElementById("timer").textContent = "Time Left: 15:00";
-    
+    document.getElementById("timer").textContent = "Time Left: 5:00";
+  
     // Reset question number and question text
     document.getElementById("question-number").textContent = "";
     document.getElementById("question").textContent = "";
-    
+  
     // Reset options
     const optionsElement = document.getElementById("options");
     optionsElement.innerHTML = "";
-    
-    const resetButton = document.getElementById('reset-btn');
-    resetButton.style.visibility = 'hidden';
-    
+  
+    // Hide the reset button in the navbar
+    const resetButton = document.getElementById("reset-btn");
+    resetButton.style.visibility = "hidden";
+  
     // Hide the next button
     document.getElementById("next-btn").classList.add("hidden");
   }
