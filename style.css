@@ -221,13 +221,14 @@ button:hover {
     font-weight: bold;
 }
 
-/* Footer Styling */
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     width: 100%;
-    margin-top: auto; /* Pushes the footer to the bottom */
+    padding: 10px 0; /* Add padding for spacing */
+    margin-top: auto; /* Ensure the footer sticks to the bottom only if content is less */
+    position: relative; /* Default position */
 }
 
 footer p {
@@ -270,6 +271,17 @@ footer p {
     #theme-toggle {
         font-size: 14px; /* Adjust button size */
     }
+    footer {
+        position: fixed; /* Fix the footer at the bottom */
+        bottom: 0; /* Stick it to the bottom */
+        left: 0; /* Align it with the left edge */
+        right: 0; /* Align it with the right edge */
+        padding: 8px 0; /* Adjust padding for smaller screens */
+    }
+
+    footer p {
+        font-size: 14px; /* Adjust font size for readability */
+    }
 
     button {
         font-size: 14px;
@@ -296,6 +308,13 @@ footer p {
     button {
         font-size: 12px;
         padding: 6px 10px;
+    }
+    footer {
+        padding: 6px 0; /* Further reduce padding */
+    }
+
+    footer p {
+        font-size: 12px; /* Smaller font size for compact view */
     }
 }
 
